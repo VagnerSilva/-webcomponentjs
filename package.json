@@ -1,0 +1,26 @@
+{
+  "name": "@webcomponentjs",
+  "version": "1.0.0",
+  "description": "Web Component Decorator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VagnerSilva/-webcomponentjs.git"
+  },
+  "keywords": [
+    "web",
+    "component",
+    "javascript",
+    "js",
+    "vanilla"
+  ],
+  "author": "Vagner Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VagnerSilva/-webcomponentjs/issues"
+  },
+  "homepage": "https://github.com/VagnerSilva/-webcomponentjs#readme"
+}
