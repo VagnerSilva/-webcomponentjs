@@ -1,6 +1,6 @@
 {
   "name": "webcomponents-vanilla",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Web Component Decorator",
   "main": "index.js",
   "scripts": {
