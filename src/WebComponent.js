@@ -1,7 +1,8 @@
 /**
  * {
  *  templateUrl: './index.html',
- *  tagName: 'my-component'
+ *  tagName: 'my-component',
+ *  extends: 'buttom'
  * }
  * @param {object} component 
  */
@@ -15,7 +16,9 @@ export function WebComponent(component) {
             }
         }
 
-        window.customElements.define(component.tagName, newConstructor);
+        component.extends ?
+            window.customElements.define(component.tagName, newConstructor, component.extends) :
+            window.customElements.define(component.tagName, newConstructo);
 
         return newConstructor;
 

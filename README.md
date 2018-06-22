@@ -19,3 +19,21 @@ class MyComponent extends HTMLElement{
 }
 ```
 
+#### Create extended elements
+
+```js
+import { webComponent } from  'webcomponents-vanilla';
+
+@webComponent({
+templateUrl:  './my-template.html',
+tagName:  'my-component',
+extends:  'input'
+})
+class  MyComponent  extends  HTMLInputElement{
+	constructor() {
+		super();
+	}
+}
+```
+
+
