@@ -1,5 +1,5 @@
 {
-  "name": "@webcomponentjs",
+  "name": "webcomponents-vanilla",
   "version": "1.0.0",
   "description": "Web Component Decorator",
   "main": "index.js",
