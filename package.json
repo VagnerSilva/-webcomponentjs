@@ -1,6 +1,6 @@
 {
   "name": "webcomponents-vanilla",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Web Component Decorator",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/VagnerSilva/-webcomponentjs/issues"
   },
-  "homepage": "https://github.com/VagnerSilva/-webcomponentjs#readme"
+  "homepage": "https://github.com/VagnerSilva/-webcomponentjs#readme",
+  "devDependencies": {
+    "decorator-class-update": "^1.0.2"
+  }
 }

@@ -1,6 +1,8 @@
+import { UpdateClass } from 'decorator-class-update';
 /**
  * {
  *  templateUrl: './index.html',
+ *  styleUrl: './style.scss',
  *  tagName: 'my-component',
  *  extends: 'buttom'
  * }
@@ -16,6 +18,17 @@ export function WebComponent(component) {
             }
         }
 
+        // add observedAttributes
+        const result = UpdateClass.watch('attributes', target.prototype);
+        if (result.length !== 0) {
+            Object.defineProperty(target, 'observedAttributes', {
+                get: function get() {
+                    return result;
+                }
+            });
+        }
+
+        // define element
         component.extends ?
             window.customElements.define(component.tagName, newConstructor, component.extends) :
             window.customElements.define(component.tagName, newConstructo);
