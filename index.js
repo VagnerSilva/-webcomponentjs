@@ -1,2 +1,2 @@
 export * from './src/WebComponent';
-export * from './src/ObservedAttirbutes;'
+export * from './src/ObservedAttirbutes';
