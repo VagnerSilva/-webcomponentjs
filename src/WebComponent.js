@@ -1,12 +1,23 @@
 import { UpdateClass } from 'decorator-class-update';
 /**
- * {
+ * 
+ * @param {Object} component
+ * @example
+ * @WebComponent({
  *  templateUrl: './index.html',
  *  styleUrl: './style.scss',
  *  tagName: 'my-component',
- *  extends: 'buttom'
- * }
- * @param {object} component 
+ * })
+ * class MyComponent extends HTMLElement{}
+ * 
+ * // extend element
+ *  * @WebComponent({
+ *  templateUrl: './index.html',
+ *  styleUrl: './style.scss',
+ *  tagName: 'my-component',
+ *  extends: 'input'
+ * })
+ * class MyComponent extends HTMLInputElement{}
  */
 export function WebComponent(component) {
     return function (target) {
@@ -28,9 +39,10 @@ export function WebComponent(component) {
             });
         }
 
+
         // define element
         component.extends ?
-            window.customElements.define(component.tagName, newConstructor, component.extends) :
+            window.customElements.define(component.tagName, newConstructor, { 'extends': component.extends }) :
             window.customElements.define(component.tagName, newConstructo);
 
         return newConstructor;
