@@ -3,6 +3,7 @@
 Decorator to create components with Web Components Vanilla Javascript.
 
 **install:** npm i -P webcomponents-vanilla reflect-metadate
+
 **requirement** configured webpack loader [template-url-webpack](https://www.npmjs.com/package/template-url-webpack#webpack) in your project
 
 ```js
