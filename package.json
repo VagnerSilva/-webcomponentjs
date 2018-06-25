@@ -23,7 +23,7 @@
     "url": "https://github.com/VagnerSilva/-webcomponentjs/issues"
   },
   "homepage": "https://github.com/VagnerSilva/-webcomponentjs#readme",
-  "devDependencies": {
+  "Dependencies": {
     "decorator-class-update": "^1.0.2"
   }
 }
