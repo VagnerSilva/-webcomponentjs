@@ -1,23 +1,34 @@
 import { UpdateClass } from 'decorator-class-update';
 /**
- * 
+ * Define custom element with web component vanilla
  * @param {Object} component
+ * @WebComponent
  * @example
- * @WebComponent({
+ * WebComponent({
  *  templateUrl: './index.html',
  *  styleUrl: './style.scss',
  *  tagName: 'my-component',
  * })
- * class MyComponent extends HTMLElement{}
+ * class MyComponent extends HTMLElement{
+ *  constructor() {
+ *      super();
+ *  }
+ * }
  * 
  * // extend element
- *  * @WebComponent({
+ * @WebComponent
+ * @example
+ * WebComponent({
  *  templateUrl: './index.html',
  *  styleUrl: './style.scss',
  *  tagName: 'my-component',
  *  extends: 'input'
  * })
- * class MyComponent extends HTMLInputElement{}
+ * class MyComponent extends HTMLInputElement{
+ *  constructor(){
+ *      super()
+ *  }
+ * }
  */
 export function WebComponent(component) {
     return function (target) {
@@ -49,3 +60,4 @@ export function WebComponent(component) {
 
     }
 }
+WebComponent()

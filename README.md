@@ -27,10 +27,10 @@ class MyComponent extends HTMLElement{
 import { webComponent } from  'webcomponents-vanilla';
 
 @webComponent({
-templateUrl:  './my-template.html',
-styleUrl: './style.scss',
-tagName:  'my-component',
-extends:  'input'
+	templateUrl:  './my-template.html',
+	styleUrl: './style.scss',
+	tagName:  'my-component',
+	extends:  'input'
 })
 class  MyComponent  extends  HTMLInputElement{
 	constructor() {
@@ -39,4 +39,23 @@ class  MyComponent  extends  HTMLInputElement{
 }
 ```
 
+#### Observe Attributes
+
+```js
+import { webComponent } from  'webcomponents-vanilla';
+
+@webComponent({
+	tagName:  'my-component'
+	templateUrl:  './my-template.html',
+	styleUrl: './style.scss'
+
+})
+class  MyComponent  extends  HTMLElement{
+	constructor() {
+		super();
+	}
+
+	@Observer('value', 'my-attr')
+	attributeChangedCallback(name, oldValue, newValue) {}
+}
 
