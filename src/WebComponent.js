@@ -54,7 +54,7 @@ export function WebComponent(component) {
         // define element
         component.extends ?
             window.customElements.define(component.tagName, newConstructor, { 'extends': component.extends }) :
-            window.customElements.define(component.tagName, newConstructo);
+            window.customElements.define(component.tagName, newConstructor);
 
         return newConstructor;
 
