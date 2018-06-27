@@ -77,6 +77,17 @@ class  MyComponent  extends  HTMLElement{
 	}
 
 	@Observer('value', 'myAttr')
-	attributeChangedCallback(name, oldValue, newValue) {}
+	attributeChangedCallback(name, oldValue, newValue) {
+		switch (key) {
+			case 'value':
+					//code
+				break;
+			case 'myAttr':
+					//code
+				break;
+			default:
+				break;
+		}
+	}
 }
 
