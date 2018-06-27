@@ -1,7 +1,17 @@
 import { UpdateClass } from 'decorator-class-update';
 /**
+ *
+ * @typedef {Object} component
+ * @property {string} tagName - 'my-element'
+ * @property {string} templateUrl - './index.html'
+ * @property {string} styleUrl - './style.scss'
+ * @property {[string]} extends - 'input'
+ * @property {[string]} mode - 'open || closed' Default 'open'
+ */
+
+/**
  * Define custom element with web component vanilla
- * @param {Object} component
+ * @param {...component} component
  * @WebComponent
  * @example
  * WebComponent({
@@ -32,10 +42,13 @@ import { UpdateClass } from 'decorator-class-update';
  */
 export function WebComponent(component) {
     return function (target) {
+
+        if(!component.mode) component.mode = 'open'
+
         const newConstructor = class extends target {
             constructor() {
                 super();
-                this.attachShadow({ mode: 'open' });
+                this.attachShadow({ mode: component.mode });
                 this.shadowRoot.innerHTML = component.templateUrl;
             }
         }
@@ -60,4 +73,3 @@ export function WebComponent(component) {
 
     }
 }
-WebComponent()

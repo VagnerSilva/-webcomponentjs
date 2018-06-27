@@ -1,8 +1,8 @@
 import { UpdateClass } from 'decorator-class-update';
 
 /**
- * Observe attributes
- * @param {*} args 
+ * Observe is used to indicate which attributes will trigger the attributeChangedCallback function
+ * 
  * @WebComponent
  * @Observe
  * @example
@@ -31,3 +31,6 @@ export function Observer(...args) {
 
     }
 }
+
+
+

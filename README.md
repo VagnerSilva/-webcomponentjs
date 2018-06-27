@@ -4,7 +4,24 @@ Decorator to create components with Web Components Vanilla Javascript.
 
 **install:** npm i -P webcomponents-vanilla reflect-metadate
 
-**requirement** configured webpack loader [template-url-webpack](https://www.npmjs.com/package/template-url-webpack#webpack) in your project
+**requirement** configured webpack loader [template-url-webpack](https://www.npmjs.com/package/template-url-webpack#webpack) 
+and [style-url-webpack](https://www.npmjs.com/package/style-url-webpack)
+in your project
+
+
+### WebComponent
+
+```js
+@webComponent({
+	tagName:  'my-component',
+	templateUrl:  './my-template.html',
+	styleUrl: './style.scss',
+	
+	extends:  'input' // optional
+	mode: 'closed' // optional (open (default) || closed)
+})
+
+```
 
 ```js
 import { webComponent } from 'webcomponents-vanilla';
@@ -39,7 +56,11 @@ class  MyComponent  extends  HTMLInputElement{
 }
 ```
 
+
+### Attribute
+
 #### Observe Attributes
+Observe is used to indicate which attributes will trigger the attributeChangedCallback function.
 
 ```js
 import { webComponent } from  'webcomponents-vanilla';
@@ -55,7 +76,7 @@ class  MyComponent  extends  HTMLElement{
 		super();
 	}
 
-	@Observer('value', 'my-attr')
+	@Observer('value', 'myAttr')
 	attributeChangedCallback(name, oldValue, newValue) {}
 }
 
