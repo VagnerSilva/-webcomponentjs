@@ -67,7 +67,65 @@ class  MyComponent  extends  HTMLInputElement{
 |**adoptedCallback**| The custom element has been moved into a new `document` (e.g. someone called `document.adoptNode(el)`).
 
 
-### Attribute
+### Properties and attributes
+
+
+Through @Attribute we have the following possibilities
+
+```js
+// default property
+       Attribute()
+	   value() { }
+/** out:
+	 get value() {
+	   return this.getAttribute('value');
+	 }
+
+	 set value(newValue) {
+	  this.setAttribute('value', newValue);
+	 }
+  */
+```
+
+
+```js
+// default property
+    Attribute(true)
+	value() { }
+	   
+	/** 
+	 get value() {
+		return this.getAttribute('value');
+	 }
+
+	 set value(newValue) {
+     	 this.setAttribute('value', newValue);
+	  }
+   */
+```
+
+```js
+// Boolean property
+    Attribute(true) // out: get hidden() {return this.hasAttribute('hidden');}
+	hidden(disable) {
+        if(disable) {
+            this.setAttribute('hidden', '')
+        } else {
+            this.removeAttribute('hidden');
+        }
+    }
+```
+
+```js
+// custom property
+    Attribute({
+        get: function () { return this.style.animationName }
+    })
+    animate() {
+        // code
+    !}
+	   
+```
 
 #### Observe Attributes
 Observe is used to indicate which attributes will trigger the attributeChangedCallback function.
@@ -101,3 +159,7 @@ class  MyComponent  extends  HTMLElement{
 	}
 }
 
+
+## Upcoming features
+Event
+Depentence Injector

@@ -1,6 +1,8 @@
 
 
 
+
+
 /**
  * check if method has parameter
  * @param {Function} f 
@@ -50,6 +52,7 @@ export function check(property) {
         isObject:    propType === 'object',
         isString:    propType === 'string',
         isSymbol:    propType === 'symbol',
+        isBoolean:   propType === 'boolean',
         isUndefined: propType === 'undefined',
         isArrowFunction: String(property).includes('=>')
     };
