@@ -90,9 +90,9 @@ import { MyProvider }  from './my.provider';
 	templateUrl:  './my-template.html',
 	styleUrl: './style.scss',
 	tagName:  'my-component',
-	prividers:  [MyProvider]
+	prividers:  [MyProvider] // must be the same order as the class constructor
 })
-class  MyComponent  extends  HTMLInputElement{
+class  MyComponent  extends  HTMLElement{
 	constructor(provider) {
 		super();
 		this.provider = provider;
