@@ -1,19 +1,21 @@
 import { UpdateClass } from 'decorator-class-update';
 import { check } from './utils/helpers/index'
+import { IoC } from 'di-decorator-js';
 
 
 const _shadowCreated = Symbol('_shadowCreated');
-let option, template, tag;
+let option, template, tag, providers;
 
 /**
- *
+ * @typedef {Object} dependencies
  * @typedef {Object} component
  * @property {string} tagName - 'my-element'
  * @property {string} templateUrl - './index.html'
  * @property {string} styleUrl - './style.scss'
  * @property {[string]} extends - 'input'
- * @property {[string]} mode - 'open || closed' Default 'open' - Enabled if shadow true
+ * @property {[string]} mode - 'open || closed' - Enabled if shadow true
  * @property {[boolean]} shadow - 'actived shadow dom || true or false
+ * @property {dependencies} providers - dependencies
  */
 
 /**
@@ -56,6 +58,7 @@ export function WebComponent(component) {
 
         option = component;
         tag = option.tagName;
+        providers = option.providers;
         template = document.createElement('template');
         template.innerHTML = option.templateUrl;
 
@@ -65,7 +68,7 @@ export function WebComponent(component) {
         if (!tag || !String(tag).includes('-')) throw handleError().tag;
         if (!check(tag).isString) throw handleError().tagString;
         if (customElements.get(tag)) throw handleError().tagExist; 
-
+        if(!providers) providers = [];
 
 
         // add observedAttributes
@@ -80,8 +83,11 @@ export function WebComponent(component) {
 
         const newConstructor = class extends target {
 
-            constructor() {
-                super();
+            constructor(...args) {
+                // dependency injection
+                super(...args.concat(providers
+                    .slice(args.length)
+                    .map(instance => IoC.resolve(instance))));
 
                 if (option.shadow) {
                     this[_shadowCreated]();
