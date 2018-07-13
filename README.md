@@ -127,23 +127,6 @@ Through @Attribute we have the following possibilities
   */
 ```
 
-
-```js
-// default property
-    Attribute(true)
-	value() { }
-	   
-	/** 
-	 get value() {
-		return this.getAttribute('value');
-	 }
-
-	 set value(newValue) {
-     	 this.setAttribute('value', newValue);
-	  }
-   */
-```
-
 ```js
 // Boolean property
     Attribute(true) // out: get hidden() {return this.hasAttribute('hidden');}
