@@ -90,7 +90,7 @@ import { MyProvider }  from './my.provider';
 	templateUrl:  './my-template.html',
 	styleUrl: './style.scss',
 	tagName:  'my-component',
-	prividers:  [MyProvider] // must be the same order as the class constructor
+	providers:  [MyProvider] // must be the same order as the class constructor
 })
 class  MyComponent  extends  HTMLElement{
 	constructor(provider) {
