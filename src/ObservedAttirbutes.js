@@ -2,7 +2,7 @@ import { UpdateClass } from 'decorator-class-update';
 
 /**
  * Observe is used to indicate which attributes will trigger the attributeChangedCallback function
- * 
+ *
  * @WebComponent
  * @Observe
  * @example
@@ -18,19 +18,14 @@ import { UpdateClass } from 'decorator-class-update';
  *  Observer('value', 'min')
  *  attributeChangedCallback(name, oldValue, newValue) { //code }
  * }
- * 
+ *
  */
 export function Observer(...args) {
-    return function (target, key, descriptor) {
-
-        if (key !== 'attributeChangedCallback') {
-            throw '@Observer not found "attributeChangedCallback"';
-        }
-
-        UpdateClass.subscribe('attributes', target, () => args);
-
+  return function (target, key, descriptor) {
+    if (key !== 'attributeChangedCallback') {
+      throw '@Observer not found "attributeChangedCallback"';
     }
+
+    UpdateClass.subscribe('attributes', target, () => args);
+  };
 }
-
-
-

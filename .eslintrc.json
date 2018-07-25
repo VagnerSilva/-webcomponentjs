@@ -1,0 +1,80 @@
+{
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "allowImportExportEverywhere": true
+    },
+    "rules": {
+        "max-len": [
+            "error",
+            {
+                "code": 250
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "arrow-body-style": ["error", "as-needed"],
+        "component-class-suffix": true,
+        "use-input-property-decorator": true,
+        "use-output-property-decorator": true,
+        "no-underscore-dangle": "off",
+        "no-return-assign": "off",
+        "consistent-return": "off",
+        "no-throw-literal": "off",
+        "no-else-return": "off",
+        "no-cond-assign": "off",
+        "no-unused-expressions": "off",
+        "no-nested-ternary": "off",
+        "no-param-reassign": "off",
+        "func-names": "off",
+        "no-unused-vars": "off",
+        "no-eval": [
+            "error",
+            {
+                "allowIndirect": true
+            }
+        ],
+        "no-console": 0,
+        "no-string-literal": false,
+        "object-literal-sort-keys": false,
+        "no-plusplus": [
+            0,
+            {
+                "allowForLoopAfterthoughts": true
+            }
+        ],
+        "class-methods-use-this": 0,
+        "import/newline-after-import": [
+            2
+        ],
+        "import/order": [
+          0
+        ],
+        "import/prefer-default-export": [
+            0
+        ],
+        "import/extensions": [
+            0
+        ],
+        "import/no-absolute-path": [
+            0
+        ],
+        "import/no-extraneous-dependencies": [
+            0
+        ],
+        "import/no-named-as-default": [
+            0
+        ],
+        "import/no-unresolved": [
+            0
+        ]
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true,
+        "es6": true
+    }
+}
