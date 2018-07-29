@@ -63,6 +63,7 @@ class  MyComponent  extends  HTMLInputElement{
 |    Name |Called when|
 |----------------|--------------------------------------------|
 |**Constructor** |  Only dependency injection
+|**initProperty**| Initializes properties before the component is created and called connectedCallback
 |**connectedCallback**|Called every time the element is inserted into the DOM. Useful for running setup code, such as fetching resources or rendering. Generally, you should try to delay work until this time.
 |**disconnectedCallback**|Called every time the element is removed from the DOM. Useful for running clean up code.
 |**attributeChangedCallback** |Called when an [observed attribute] has been added, removed, updated, or replaced. Also called for initial values when an element is created by the parser, or [upgraded]. **Note:** only attributes listed in the `@Observe()` property will receive this callback.
@@ -115,7 +116,7 @@ Through @Attribute we have the following possibilities
 
 ```js
 // default property
-       Attribute()
+     @Attribute()
 	   value() { }
 /** out:
 	 get value() {
@@ -130,7 +131,7 @@ Through @Attribute we have the following possibilities
 
 ```js
 // Boolean property
-    Attribute(true) // out: get hidden() {return this.hasAttribute('hidden');}
+  @Attribute(true) // out: get hidden() {return this.hasAttribute('hidden');}
 	hidden(disable) {
         if(disable) {
             this.setAttribute('hidden', '')
@@ -142,7 +143,7 @@ Through @Attribute we have the following possibilities
 
 ```js
 // custom property
-    Attribute({
+    @Attribute({
         get: function () { return this.style.animationName }
     })
     animate() {
