@@ -148,10 +148,8 @@ export function WebComponent(component) {
       }
 
       attributeChangedCallback(name, oldValue, newValue) {
-        // call after connectedCallback
-        super.attributeChangedCallback && setTimeout(() => {
-          super.attributeChangedCallback(name, oldValue, newValue);
-        }, 0);
+        super.attributeChangedCallback
+          && super.attributeChangedCallback(name, oldValue, newValue);
       }
 
 
