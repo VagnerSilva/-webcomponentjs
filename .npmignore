@@ -1,6 +1,8 @@
 node_modules
 src
+test
 .babelrc
+.bowerrc
 .*.swp
 ._*
 .DS_Store
@@ -11,5 +13,10 @@ src
 .svn
 .wafpickle-*
 config.gypi
+.editorconfig
 CVS
+jsconfig.json
 npm-debug.log
+postcss.config.js
+wct.conf.json
+webpack.config.test.js

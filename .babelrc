@@ -1,7 +1,8 @@
 {
-    "plugins": ["transform-runtime"],
-    "presets": [
-        "env",
-        "stage-3"
-    ]
+  "presets": ["env"],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  }
 }

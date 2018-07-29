@@ -31,6 +31,7 @@
         "no-param-reassign": "off",
         "func-names": "off",
         "no-unused-vars": "off",
+        "no-useless-constructor": "off",
         "no-eval": [
             "error",
             {
