@@ -122,7 +122,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['test/build']),
+  //  new CleanWebpackPlugin(['test/build']),
     new HtmlWebpackPlugin({
       title: 'WC',
       template: 'test/index.html',

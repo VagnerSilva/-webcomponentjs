@@ -7,7 +7,7 @@
     "prepublish": "npm run transpile",
     "test": "npm run test:coverage && npm run test:wct",
     "test:coverage": "nyc npm run test:mocha",
-    "test:build": "webpack --config webpack.config.test.js",
+    "test:build": "rimraf test/build/* && webpack --config webpack.config.test.js",
     "test:local": "./node_modules/.bin/wct --plugin=local test/build/index.html",
     "test:driverInstall": "./node_modules/.bin/selenium-standalone install",
     "test:mocha": "./node_modules/.bin/mocha test/src/utils/**/*.spec.js --require babel-register",
