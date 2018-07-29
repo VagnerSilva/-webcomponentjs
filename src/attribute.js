@@ -2,6 +2,9 @@
 import {
   check, functionToString, hasReturn, hasParameter, hasThis,
 } from './utils/helpers';
+
+import { UpdateClass } from 'decorator-class-update';
+
 /**
  * Default and custom properties
  * @param {[Object]} attribute
@@ -68,5 +71,35 @@ export function Attribute(attribute = 'default') {
       : descriptor.set = function (newValue) { this.setAttribute(`${key}`, newValue); };
 
     return descriptor;
+  };
+}
+
+/**
+ * Observe is used to indicate which attributes will trigger the attributeChangedCallback function
+ *
+ * @WebComponent
+ * @Observe
+ * @example
+ * WebComponent({
+ *  tagName: 'my-element',
+ *  templateUrl: './index.html',
+ *  styleUrl: './style.scss'
+ * })
+ * class MyElement extends HTMLElement {
+ *  construcotr() {
+ *      super()
+ *  }
+ *  Observer('value', 'min')
+ *  attributeChangedCallback(name, oldValue, newValue) { //code }
+ * }
+ *
+ */
+export function Observer(...args) {
+  return function (target, key, descriptor) {
+    if (key !== 'attributeChangedCallback') {
+      throw '@Observer not found "attributeChangedCallback"';
+    }
+
+    UpdateClass.subscribe('attributes', target, () => args);
   };
 }
