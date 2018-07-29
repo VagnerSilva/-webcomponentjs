@@ -1,4 +1,4 @@
-import { WebComponent } from '../../../lib';
+import { WebComponent } from '../../../src/WebComponent';
 
 @WebComponent({
   tagName: 'wc-component',
@@ -10,9 +10,12 @@ export class WcComponent extends HTMLElement {
     super();
   }
 
+  initProperty() {
+    this.start = 'Eureka!';
+  }
+
   connectedCallback() {
-    console.log('container connected');
-    console.log(this.children.length);
+    this.connected = true;
   }
 
   attributeChangedCallback() {
@@ -22,5 +25,6 @@ export class WcComponent extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.connected = false;
   }
 }

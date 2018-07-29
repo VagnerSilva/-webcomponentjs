@@ -120,11 +120,18 @@ export function WebComponent(component) {
           .slice(args.length)
           .map(instance => IoC.resolve(instance))));
 
+        self.initProperty();
         return self;
+      }
+
+      initProperty() {
+        super.initProperty
+          && super.initProperty();
       }
 
       connectedCallback() {
         // create element
+        console.log('created');
         if (option.shadow) {
           this[_shadowCreated]();
         } else {
