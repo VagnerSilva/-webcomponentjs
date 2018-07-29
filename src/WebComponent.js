@@ -131,7 +131,6 @@ export function WebComponent(component) {
 
       connectedCallback() {
         // create element
-        console.log('created');
         if (option.shadow) {
           this[_shadowCreated]();
         } else {
