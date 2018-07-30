@@ -37,7 +37,6 @@ export class WcAttribute extends HTMLElement {
   )
   attributeChangedCallback(name, oldValue, newValue) {
     this.lastAttrChanged = name;
-    console.log(this.lastAttrChanged);
   }
 
   adoptedCallback() {

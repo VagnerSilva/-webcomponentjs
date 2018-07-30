@@ -43,7 +43,7 @@ module.exports = {
         ],
         exclude: ['node_modules'],
         include: [
-          path.resolve(__dirname, 'src'),
+        //  path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'test'),
         ],
       },
@@ -59,8 +59,8 @@ module.exports = {
               minimize: true,
               removeAttributeQuotes: false,
               caseSensitive: true,
-              customAttrSurround: [[/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/]],
-              customAttrAssign: [/\)?\]?=/],
+              // customAttrSurround: [[/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/]],
+              // customAttrAssign: [/\)?\]?=/],
             },
 
           }],
