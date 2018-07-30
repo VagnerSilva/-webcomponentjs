@@ -9,6 +9,7 @@
     "test:coverage": "nyc npm run test:mocha",
     "test:build": "rimraf test/build/* && webpack --config webpack.config.test.js",
     "test:local": "./node_modules/.bin/wct --plugin=local test/build/index.html",
+    "test:serve": "webpack-dev-server --open --config webpack.config.test.js",
     "test:driverInstall": "./node_modules/.bin/selenium-standalone install",
     "test:mocha": "./node_modules/.bin/mocha test/src/utils/**/*.spec.js --require babel-register",
     "test:wct": "npm run test:build && npm run test:local",

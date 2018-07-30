@@ -14,7 +14,7 @@ const glob = require('glob');
 
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
     'babel-polyfill': 'babel-polyfill',
     polyfills: path.resolve('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js'),
@@ -29,14 +29,6 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
     },
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
-      }),
-      new OptimizeCssAssetsPlugin({}),
-    ],
   },
   module: {
 
@@ -133,4 +125,13 @@ module.exports = {
       chunkFilename: '[id].[hash].css',
     }),
   ],
+  devServer: {
+    watchContentBase: true,
+    inline: true,
+    compress: true,
+    progress: true,
+    historyApiFallback: true,
+    stats: 'errors-only',
+    open: true,
+  },
 };
