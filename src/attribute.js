@@ -100,6 +100,10 @@ export function Observer(...args) {
       throw '@Observer not found "attributeChangedCallback"';
     }
 
+    if (!check(args[0]).isString) {
+      throw '@Observer supports string parameter only';
+    }
+
     UpdateClass.subscribe('attributes', target, () => args);
   };
 }
