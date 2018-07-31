@@ -25,3 +25,4 @@ webpack.config.test.js
 .circleci
 coverage
 .nyc_output
+.eslintrc.json
