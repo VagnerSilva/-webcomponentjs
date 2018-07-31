@@ -1,0 +1,22 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js: stable
+addons:
+  firefox: latest
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chorme-stable
+cache:
+  directories:
+    "node_modules"
+env:
+    - BABEL_ENV=production
+install:
+- npm install
+- npm run test:driverInstall
+script:
+  npm test
+

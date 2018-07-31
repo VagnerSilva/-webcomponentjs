@@ -20,3 +20,4 @@ npm-debug.log
 postcss.config.js
 wct.conf.json
 webpack.config.test.js
+.travis.yml
