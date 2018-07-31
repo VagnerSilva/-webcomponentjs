@@ -12,6 +12,7 @@ describe('Utils', () => {
   const _this = 'this';
   function myFunc(a) { return a; }
   function anotherFunc() { _this; }
+
   context('Check functions', () => {
     it('Should check if the function has parameter', () => {
       expect(hasParameter).to.be.a('function');
@@ -28,7 +29,7 @@ describe('Utils', () => {
     it('Should check if the function has _this', () => {
       expect(hasThis).to.be.a('function');
       expect(hasThis(myFunc)).to.be.eq(false);
-      expect(hasThis(anotherFunc)).to.deep.include('_this');
+      expect(hasThis(anotherFunc)).to.be.ok;
     });
   });
 

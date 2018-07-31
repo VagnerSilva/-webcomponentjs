@@ -62,7 +62,9 @@ export function check(property) {
  */
 export function hasThis(property) {
   const prop = String(property);
-  const that = prop.match(/_this/);
+  const that = prop.includes('_this');
   if (that === null) return false;
+  console.log('that');
+  console.log(that);
   return that;
 }
