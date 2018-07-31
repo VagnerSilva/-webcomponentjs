@@ -2,6 +2,8 @@
 
 Decorator to create components with Web Components Vanilla Javascript.
 
+[![CircleCI](https://circleci.com/gh/VagnerSilva/-webcomponentjs/tree/master.svg?style=svg)](https://circleci.com/gh/VagnerSilva/-webcomponentjs/tree/master) [![Coverage Status](https://coveralls.io/repos/github/VagnerSilva/-webcomponentjs/badge.svg?branch=master)](https://coveralls.io/github/VagnerSilva/-webcomponentjs?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/VagnerSilva/-webcomponentjs/badge.svg?targetFile=package.json)](https://snyk.io/test/github/VagnerSilva/-webcomponentjs?targetFile=package.json) [![GitHub license](https://img.shields.io/github/license/VagnerSilva/-webcomponentjs.svg)](https://github.com/VagnerSilva/-webcomponentjs/blob/master/LICENSE)
+
 **install:** 
 > npm i -P webcomponents-vanilla reflect-metadate
 
