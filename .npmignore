@@ -21,3 +21,5 @@ postcss.config.js
 wct.conf.json
 webpack.config.test.js
 .travis.yml
+.coveralls.yml
+.circleci
