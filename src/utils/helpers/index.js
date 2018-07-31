@@ -48,7 +48,7 @@ export function check(property) {
     isNumber: propType === 'number',
     isObject: propType === 'object',
     isString: propType === 'string',
-    isSymbol: propType === 'symbol' || (typeof propType === 'object' && Object.prototype.toString.call(propType) === '[object Symbol]'),
+    isSymbol: propType === 'symbol',
     isBoolean: propType === 'boolean',
     isUndefined: propType === 'undefined',
     isArrowFunction: String(property).includes('=>'),
@@ -63,6 +63,5 @@ export function check(property) {
 export function hasThis(property) {
   const prop = String(property);
   const that = prop.includes('_this');
-  if (that === null) return false;
   return that;
 }
