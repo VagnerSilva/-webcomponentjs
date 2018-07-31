@@ -23,3 +23,5 @@ webpack.config.test.js
 .travis.yml
 .coveralls.yml
 .circleci
+coverage
+.nyc_output
