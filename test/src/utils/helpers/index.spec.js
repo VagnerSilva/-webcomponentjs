@@ -32,13 +32,13 @@ describe('Utils', () => {
     });
   });
 
-  it('Should convert functions in String', () => {
-    expect(functionToString).to.be.a('function');
-    expect(functionToString(myFunc)).to.be.equal('function(a) {\n    return a;\n  }');
-    expect(functionToString(myFunc)).to.be.a('String');
-  });
-
   context('Should check the types of the properties', () => {
+    it('Should convert functions in String', () => {
+      expect(functionToString).to.be.a('function');
+      expect(functionToString(myFunc).replace(/\s/g, '')).to.be.equal('function(a){returna;}');
+      expect(functionToString(myFunc).replace(/\s/g, '')).to.be.a('String');
+    });
+
     it('Should be array', () => {
       const x = ['a'];
       const y = new Array(x.length);

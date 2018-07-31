@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run transpile",
-    "test": "npm run test:coverage && npm run test:wct",
+    "test": "npm run test:coverage && npm run test:wct && nyc report --reporter=text-lcov | coveralls",
     "test:coverage": "nyc npm run test:mocha",
     "test:build": "rimraf test/build/* && webpack --config webpack.config.test.js",
     "test:local": "./node_modules/.bin/wct --plugin=local test/build/index.html",
