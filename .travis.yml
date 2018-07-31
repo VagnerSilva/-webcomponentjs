@@ -9,8 +9,7 @@ addons:
     - google-chrome-stable
 language: node_js
 node_js:
-- '6'
-- '8'
+- 'node'
 cache:
   directories:
     "node_modules"
@@ -20,4 +19,4 @@ install:
 - npm install
 - npm run test:driverInstall
 script:
-- xvfb-run npm test
+- npm test
