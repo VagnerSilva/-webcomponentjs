@@ -1,14 +1,16 @@
-
 sudo: required
-language: node_js
-node_js: stable
+dist: trusty
 addons:
   firefox: latest
   apt:
     sources:
     - google-chrome
     packages:
-    - google-chorme-stable
+    - google-chrome-stable
+language: node_js
+node_js:
+- '6'
+- '8'
 cache:
   directories:
     "node_modules"
@@ -18,5 +20,4 @@ install:
 - npm install
 - npm run test:driverInstall
 script:
-- npm test
-
+- xvfb-run npm test
