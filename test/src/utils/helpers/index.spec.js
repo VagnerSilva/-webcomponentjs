@@ -28,7 +28,7 @@ describe('Utils', () => {
 
     it('Should check if the function has _this', () => {
       expect(hasThis).to.be.a('function');
-      expect(hasThis(myFunc)).to.be.eq(false);
+      expect(hasThis(myFunc)).not.to.be.ok;
       expect(hasThis(anotherFunc)).to.be.ok;
     });
   });
