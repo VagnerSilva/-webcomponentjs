@@ -91,7 +91,7 @@ describe('Utils', () => {
       expect(check(y).isString).to.be.equal(true);
     });
 
-    it('Should be a string', () => {
+    it('Should be a symbol', () => {
       const x = 0;
       const y = Symbol('{ a: 1 }');
       expect(check(x).isSymbol).to.be.equal(false);

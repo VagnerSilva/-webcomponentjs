@@ -48,7 +48,7 @@ export function check(property) {
     isNumber: propType === 'number',
     isObject: propType === 'object',
     isString: propType === 'string',
-    isSymbol: propType === 'symbol',
+    isSymbol: propType === 'symbol' || (typeof propType === 'object' && Object.prototype.toString.call(propType) === '[object Symbol]'),
     isBoolean: propType === 'boolean',
     isUndefined: propType === 'undefined',
     isArrowFunction: String(property).includes('=>'),
