@@ -113,7 +113,7 @@ export function WebComponent(component) {
         const self = super(...args.concat(providers
           .slice(args.length)
           .map(instance => IoC.resolve(instance))));
-
+        self.initProperty();
         return self;
       }
 
@@ -129,8 +129,7 @@ export function WebComponent(component) {
         } else {
           super.appendChild(template.content.cloneNode(true));
         }
-        super.initProperty
-          && super.initProperty();
+
         super.connectedCallback
           && super.connectedCallback();
       }
