@@ -157,10 +157,9 @@ export function WebComponent(component) {
     _defineProperty(newConstructor.prototype, _shadowCreated, viewShadow);
 
 
-    // //  define element
-    component.extends
+    // define element
+    return component.extends
       ? window.customElements.define(tag, newConstructor, { extends: component.extends })
       : window.customElements.define(tag, newConstructor);
-    return newConstructor;
   };
 }
