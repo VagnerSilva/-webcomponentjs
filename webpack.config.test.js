@@ -34,6 +34,25 @@ module.exports = {
 
     rules: [
 
+      // js
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'test'),
+        ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            plugins: [
+              'transform-decorators-legacy',
+              'transform-custom-element-classes',
+            ],
+          },
+        },
+      },
       // templateUrl
       {
         test: /\.js$/,
@@ -43,7 +62,7 @@ module.exports = {
         ],
         exclude: ['node_modules'],
         include: [
-        //  path.resolve(__dirname, 'src'),
+          //  path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'test'),
         ],
       },
@@ -82,26 +101,7 @@ module.exports = {
         },
       },
 
-      // js
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'test'),
-        ],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-            plugins: [
-              'transform-decorators-legacy',
-              'transform-custom-element-classes',
-              'transform-es2015-classes',
-            ],
-          },
-        },
-      },
+
       {
         test: /\.scss$/,
         use: [

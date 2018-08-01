@@ -3,13 +3,6 @@ import { IoC } from 'di-decorator-js';
 import { check } from './utils/helpers/index';
 
 
-const _shadowCreated = Symbol('_shadowCreated');
-let option;
-let template;
-let tag;
-let providers;
-
-
 function handleError() {
   return {
     tag: new Error("@WebComponent need a tag name specified \n @example tagName: 'my-element'"),
@@ -35,12 +28,6 @@ const _defineProperty = (target, name, action) => {
     })
   );
 };
-
-function viewShadow() {
-  if (!this.shadowRoot) this.attachShadow({ mode: option.mode });
-  this.shadowRoot.appendChild(template.content.cloneNode(true));
-}
-
 
 /**
  * @typedef {Object} dependencies
@@ -89,10 +76,14 @@ function viewShadow() {
 
 export function WebComponent(component) {
   return function (target) {
-    option = component;
-    tag = option.tagName;
-    ({ providers } = option);
-    template = document.createElement('template');
+    const _shadowCreated = Symbol('_shadowCreated');
+    const option = component;
+    const tag = option.tagName;
+    let { providers } = option;
+
+    const template = document.createElement('template');
+    console.log(option.tagName);
+    console.log(option.templateUrl);
     template.innerHTML = option.templateUrl;
 
 
@@ -113,6 +104,11 @@ export function WebComponent(component) {
       });
     }
 
+    function viewShadow() {
+      if (!this.shadowRoot) this.attachShadow({ mode: option.mode });
+      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+
     const newConstructor = class extends target {
       constructor(...args) {
         // dependency injection
@@ -120,7 +116,6 @@ export function WebComponent(component) {
           .slice(args.length)
           .map(instance => IoC.resolve(instance))));
 
-        self.initProperty();
         return self;
       }
 
@@ -132,11 +127,12 @@ export function WebComponent(component) {
       connectedCallback() {
         // create element
         if (option.shadow) {
-          this[_shadowCreated]();
+          super[_shadowCreated]();
         } else {
-          this.appendChild(template.content.cloneNode(true));
+          super.appendChild(template.content.cloneNode(true));
         }
-
+        super.initProperty
+          && super.initProperty();
         super.connectedCallback
           && super.connectedCallback();
       }
@@ -164,8 +160,9 @@ export function WebComponent(component) {
 
 
     // //  define element
-    return component.extends
+    component.extends
       ? window.customElements.define(tag, newConstructor, { extends: component.extends })
       : window.customElements.define(tag, newConstructor);
+    return newConstructor;
   };
 }

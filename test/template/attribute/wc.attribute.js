@@ -1,4 +1,4 @@
-import { WebComponent, Observer, Attribute } from '../../../lib';
+import { WebComponent, Observer, Attribute } from '../../../src';
 
 @WebComponent({
   tagName: 'wc-attribute',
@@ -12,10 +12,14 @@ export class WcAttribute extends HTMLElement {
 
   initProperty() {
     this.start = 'Eureka!';
+    console.log('this.innerHTML');
+    console.log(this.innerHTML);
   }
 
   connectedCallback() {
-    this.connected = true;
+    this.displayVal = document.querySelector('div');
+    console.log(this.displayVal);
+    console.log('[super]connectedCallback');
   }
 
   @Attribute()
@@ -30,13 +34,11 @@ export class WcAttribute extends HTMLElement {
     }
   }
 
-  @Observer(
-    'bar',
-    'foo',
-    'hiddden',
-  )
+  @Observer('bar', 'foo', 'hiddden', 'text')
   attributeChangedCallback(name, oldValue, newValue) {
     this.lastAttrChanged = name;
+    this.displayVal.innerHTML = newValue || oldValue;
+    console.log('[super]attributeChangedCallback');
   }
 
   adoptedCallback() {
