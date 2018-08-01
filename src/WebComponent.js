@@ -82,8 +82,6 @@ export function WebComponent(component) {
     let { providers } = option;
 
     const template = document.createElement('template');
-    console.log(option.tagName);
-    console.log(option.templateUrl);
     template.innerHTML = option.templateUrl;
 
 
