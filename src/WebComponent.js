@@ -1,4 +1,3 @@
-import Builtin from 'newless';
 import { UpdateClass } from 'decorator-class-update';
 import { IoC } from 'di-decorator-js';
 import { check } from './utils/helpers/index';

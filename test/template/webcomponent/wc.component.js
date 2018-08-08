@@ -12,12 +12,10 @@ export class WcComponent extends HTMLElement {
 
   initProperty() {
     this.start = 'Eureka!';
-    console.log('Iniciado');
   }
 
   connectedCallback() {
     this.connected = true;
-    console.log('inicioou mesmo', this.start);
   }
 
   attributeChangedCallback() {
