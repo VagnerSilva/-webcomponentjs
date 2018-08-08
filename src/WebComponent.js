@@ -1,3 +1,4 @@
+import Builtin from 'newless';
 import { UpdateClass } from 'decorator-class-update';
 import { IoC } from 'di-decorator-js';
 import { check } from './utils/helpers/index';
@@ -9,6 +10,18 @@ function handleError() {
     tagString: new Error("@WebComponent tag name must be of type String \n @example tagName: 'my-element'"),
     tagExist: new Error('@WebComponent tag name already exists'),
   };
+}
+
+/**
+ *
+ * @param {String} html
+ * @param {String} css
+ */
+function _template(html, css) {
+  return `
+    <style> ${css} </style>
+    ${html}
+  `;
 }
 
 
@@ -76,13 +89,13 @@ const _defineProperty = (target, name, action) => {
 
 export function WebComponent(component) {
   return function (target) {
-    const _shadowCreated = Symbol('_shadowCreated');
+    const wcShadowCreated = Symbol('wc__shadowCreated');
     const option = component;
     const tag = option.tagName;
     let { providers } = option;
 
     const template = document.createElement('template');
-    template.innerHTML = option.templateUrl;
+    template.innerHTML = _template(option.templateUrl, option.styleUrl);
 
 
     if (!option.mode) option.mode = 'open';
@@ -113,9 +126,26 @@ export function WebComponent(component) {
         const self = super(...args.concat(providers
           .slice(args.length)
           .map(instance => IoC.resolve(instance))));
+
+        // started before creating the element
         self.initProperty();
+
+        // create element
+        if (option.shadow) {
+          self[wcShadowCreated]();
+        } else {
+          self.appendChild(template.content.cloneNode(true));
+        }
+        self._wcAfterCreateElement_();
         return self;
       }
+
+      // fix undefined property;
+      _wcAfterCreateElement_() {
+        super.connectedCallback
+          && super.connectedCallback();
+      }
+
 
       initProperty() {
         super.initProperty
@@ -123,15 +153,6 @@ export function WebComponent(component) {
       }
 
       connectedCallback() {
-        // create element
-        if (option.shadow) {
-          super[_shadowCreated]();
-        } else {
-          super.appendChild(template.content.cloneNode(true));
-        }
-
-        super.connectedCallback
-          && super.connectedCallback();
       }
 
       disconnectedCallback() {
@@ -139,11 +160,23 @@ export function WebComponent(component) {
           && super.disconnectedCallback();
       }
 
-      attributeChangedCallback(name, oldValue, newValue) {
-        super.attributeChangedCallback
-          && super.attributeChangedCallback(name, oldValue, newValue);
+      beforeAttributeChanged() {
+        super.beforeAttributeChanged
+          && super.beforeAttributeChanged();
       }
 
+      attributeChangedCallback(name, old, value) {
+        this.beforeAttributeChanged();
+        super.attributeChangedCallback
+          && super.attributeChangedCallback(name, old, value);
+        this.afterAttributeChanged();
+      }
+
+
+      afterAttributeChanged() {
+        super.afterAttributeChanged
+          && super.afterAttributeChanged();
+      }
 
       adoptedCallback() {
         super.adoptedCallback
@@ -153,7 +186,7 @@ export function WebComponent(component) {
 
 
     // created shadow dom
-    _defineProperty(newConstructor.prototype, _shadowCreated, viewShadow);
+    _defineProperty(newConstructor.prototype, wcShadowCreated, viewShadow);
 
 
     // define element
