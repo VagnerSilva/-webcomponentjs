@@ -15,6 +15,7 @@ const glob = require('glob');
 
 module.exports = {
   mode: 'development',
+  devtool: 'cheap-module-source-map',
   entry: {
     'babel-polyfill': 'babel-polyfill',
     polyfills: path.resolve('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js'),
@@ -24,6 +25,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.[hash].js',
     path: path.resolve(__dirname, 'test/build'),
+    sourceMapFilename: '[file].map',
   },
   optimization: {
     splitChunks: {
@@ -102,15 +104,15 @@ module.exports = {
       },
 
 
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     'postcss-loader',
+      //     'sass-loader',
+      //   ],
+      // },
     ],
   },
   plugins: [
