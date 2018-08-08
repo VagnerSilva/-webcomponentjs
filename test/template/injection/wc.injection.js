@@ -10,7 +10,6 @@ import { Injection } from './injectionClass';
 export class WcComponent extends HTMLElement {
   constructor(injection) {
     super();
-    console.log(injection);
     this.injection = injection;
   }
 
