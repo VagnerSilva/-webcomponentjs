@@ -1,4 +1,4 @@
-import { WebComponent } from '../../../lib';
+import { WebComponent } from '../../../src';
 import { Injection } from './injectionClass';
 
 @WebComponent({
@@ -10,6 +10,7 @@ import { Injection } from './injectionClass';
 export class WcComponent extends HTMLElement {
   constructor(injection) {
     super();
+    console.log(injection);
     this.injection = injection;
   }
 

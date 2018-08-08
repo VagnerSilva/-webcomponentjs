@@ -3,32 +3,25 @@ describe('WebComponent instance', () => {
   let el;
 
 
-  beforeEach(() => {
-    document.body.innerHTML = '';
-    el = document.createElement('wc-component');
+  before(() => {
+    el = document.querySelector('wc-component');
   });
 
 
   it('Check if property was loaded before element was created', () => {
-    expect(el.start).to.be.equal('Eureka!');
-    expect(el.innerHTML).to.be.empty;
-    document.body.appendChild(el);
+    expect(el.innerHTML).not.to.be.empty;
     expect(el.start).to.be.equal('Eureka!');
   });
 
-  it('Check element was created', () => {
-    expect(el.connected).not.to.be.ok;
-    expect(el.innerHTML).to.be.empty;
-    document.body.appendChild(el);
+  it('Call connectedCallback when element is created', () => {
     expect(el.connected).to.be.ok;
-    expect(el.innerText).include('Eureka!');
+    expect(el.innerHTML).to.have.include('Eureka!');
   });
 
-  it('Calls disconnectedCallback when removed from DOM', () => {
-    expect(el.connected).not.to.be.ok;
-    document.body.appendChild(el);
+  it('Call disconnectedCallback when removed from DOM', () => {
     expect(el.connected).to.be.ok;
-    document.body.innerHTML = '';
+    document.body.removeChild(el);
     expect(el.connected).not.to.be.ok;
+    expect(document.body).not.to.be.include(el);
   });
 });

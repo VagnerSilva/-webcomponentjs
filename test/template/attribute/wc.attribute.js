@@ -12,18 +12,15 @@ export class WcAttribute extends HTMLElement {
 
   initProperty() {
     this.start = 'Eureka!';
-    console.log('this.innerHTML');
-    console.log(this.innerHTML);
   }
 
   connectedCallback() {
-    this.displayVal = document.querySelector('div');
-    console.log(this.displayVal);
-    console.log('[super]connectedCallback');
+    this.displayVal = this.querySelector('[text]');
   }
 
-  @Attribute()
-  bar() {}
+
+  @Attribute(true)
+  bar() { }
 
   @Attribute(true)
   hiddden(isHidden) {
@@ -34,16 +31,23 @@ export class WcAttribute extends HTMLElement {
     }
   }
 
+  beforeAttributeChanged() {
+    this.before = true;
+  }
+
   @Observer('bar', 'foo', 'hiddden', 'text')
   attributeChangedCallback(name, oldValue, newValue) {
-    this.lastAttrChanged = name;
-    this.displayVal.innerHTML = newValue || oldValue;
-    console.log('[super]attributeChangedCallback');
+    if (name === 'bar') {
+      this.lastAttrChanged = name;
+      this.displayVal.innerHTML = newValue || oldValue;
+    }
   }
 
-  adoptedCallback() {
+  afterAttributeChanged() {
+    this.after = true;
   }
 
-  disconnectedCallback() {
-  }
+  adoptedCallback() { }
+
+  disconnectedCallback() { }
 }
