@@ -135,15 +135,15 @@ export function WebComponent(component) {
         } else {
           self.appendChild(template.content.cloneNode(true));
         }
-        self._wcAfterCreateElement_();
+        // self._wcAfterCreateElement_();
         return self;
       }
 
-      // fix undefined property;
-      _wcAfterCreateElement_() {
-        super.connectedCallback
-          && super.connectedCallback();
-      }
+      // // fix undefined property;
+      // _wcAfterCreateElement_() {
+      //   super.connectedCallback
+      //     && super.connectedCallback();
+      // }
 
 
       initProperty() {
@@ -152,6 +152,8 @@ export function WebComponent(component) {
       }
 
       connectedCallback() {
+        super.connectedCallback
+          && super.connectedCallback();
       }
 
       disconnectedCallback() {
