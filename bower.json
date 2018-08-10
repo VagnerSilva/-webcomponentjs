@@ -1,0 +1,22 @@
+{
+  "name": "webcomponents-vanilla",
+  "description": "Web Component Decorator",
+  "main": "lib/index.js",
+  "authors": [
+    "Vagner Silva"
+  ],
+  "license": "Apache 2.0",
+  "keywords": [
+    "web",
+    "component",
+    "javascript",
+    "js",
+    "vanilla"
+  ],
+  "homepage": "https://github.com/VagnerSilva/-webcomponentjs",
+  "dependencies": {
+    "sinonjs": "^1.17.1",
+    "test-fixture": "^3.0.0",
+    "async": "1.5.2"
+  }
+}
