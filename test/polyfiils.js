@@ -20,3 +20,14 @@ import 'core-js/es7/reflect';
 
 /* bower webcomponents polyfill */
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
+
+// Create Element.remove() function if not exist
+(function () {
+  if (!('remove' in Element.prototype)) {
+    Element.prototype.remove = function () {
+      if (this.parentNode) {
+        this.parentNode.removeChild(this);
+      }
+    };
+  }
+}());

@@ -20,7 +20,8 @@ describe('WebComponent instance', () => {
 
   it('Call disconnectedCallback when removed from DOM', () => {
     expect(el.connected).to.be.ok;
-    document.body.removeChild(el);
+    //  document.body.removeChild(el);
+    el.remove();
     expect(el.connected).not.to.be.ok;
     expect(document.body).not.to.be.include(el);
   });
