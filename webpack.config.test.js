@@ -6,7 +6,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 // utils
 const path = require('path');
 const webpack = require('webpack');
@@ -15,23 +14,21 @@ const glob = require('glob');
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: {
-    'babel-polyfill': 'babel-polyfill',
-    polyfills: path.resolve('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js'),
+    polyfills: path.resolve('test/polyfiils.js'),
     app: glob.sync(path.resolve('test/template/**/*.js')),
 
   },
   output: {
     filename: '[name].bundle.[hash].js',
     path: path.resolve(__dirname, 'test/build'),
-    sourceMapFilename: '[file].map',
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   },
+  // },
   module: {
 
     rules: [
@@ -47,10 +44,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
+            presets: [['env', {
+              modules: false,
+            }]],
             plugins: [
               'transform-decorators-legacy',
               'transform-custom-element-classes',
+              'transform-class-properties',
             ],
           },
         },
@@ -75,13 +75,10 @@ module.exports = {
           {
             loader: 'raw-loader',
             options: {
-              // exportAsEs6Default: 'es6',
               collapseWhitespace: true,
               minimize: true,
               removeAttributeQuotes: false,
               caseSensitive: true,
-              // customAttrSurround: [[/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/]],
-              // customAttrAssign: [/\)?\]?=/],
             },
 
           }],
@@ -102,17 +99,6 @@ module.exports = {
           limit: 10000,
         },
       },
-
-
-      // {
-      //   test: /\.scss$/,
-      //   use: [
-      //     MiniCssExtractPlugin.loader,
-      //     'css-loader',
-      //     'postcss-loader',
-      //     'sass-loader',
-      //   ],
-      // },
     ],
   },
   plugins: [
