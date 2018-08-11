@@ -1,10 +1,6 @@
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 // utils
 const path = require('path');
@@ -108,10 +104,6 @@ module.exports = {
       template: 'test/index.html',
     }),
     new webpack.IgnorePlugin(/vertx/),
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
-    }),
   ],
   devServer: {
     watchContentBase: true,
