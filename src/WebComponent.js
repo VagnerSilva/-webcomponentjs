@@ -88,8 +88,9 @@ const _defineProperty = (target, name, action) => {
 
 export function WebComponent(component) {
   return function (target) {
+    let option = { };
     const wcShadowCreated = Symbol('wc__shadowCreated');
-    const option = component;
+    option = component;
     const tag = option.tagName;
     let { providers } = option;
 
@@ -130,11 +131,14 @@ export function WebComponent(component) {
         self.initProperty();
 
         // create element
-        if (option.shadow) {
-          self[wcShadowCreated]();
-        } else {
-          self.appendChild(template.content.cloneNode(true));
+        if (!option.extends) {
+          if (option.shadow) {
+            self[wcShadowCreated]();
+          } else {
+            self.appendChild(template.content.cloneNode(true));
+          }
         }
+
         // self._wcAfterCreateElement_();
         return self;
       }
@@ -191,8 +195,8 @@ export function WebComponent(component) {
 
 
     // define element
-    return component.extends
-      ? window.customElements.define(tag, newConstructor, { extends: component.extends })
+    component.extends
+      ? window.customElements.define(tag, newConstructor, { extends: `${component.extends}` })
       : window.customElements.define(tag, newConstructor);
   };
 }

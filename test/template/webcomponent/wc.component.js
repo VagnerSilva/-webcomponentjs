@@ -1,4 +1,4 @@
-import { WebComponent } from '../../../src/WebComponent';
+import { WebComponent } from '../../../src';
 
 @WebComponent({
   tagName: 'wc-component',

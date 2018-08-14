@@ -7,6 +7,8 @@ const path = require('path');
 const webpack = require('webpack');
 const glob = require('glob');
 
+const babelEnv = require('./webpack/js.env');
+
 
 module.exports = {
   mode: 'development',
@@ -20,11 +22,6 @@ module.exports = {
     filename: '[name].bundle.[hash].js',
     path: path.resolve(__dirname, 'test/build'),
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   },
-  // },
   module: {
 
     rules: [
@@ -37,19 +34,9 @@ module.exports = {
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'test'),
         ],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['env', {
-              modules: false,
-            }]],
-            plugins: [
-              'transform-decorators-legacy',
-              'transform-custom-element-classes',
-              'transform-class-properties',
-            ],
-          },
-        },
+        use: [
+          babelEnv,
+        ],
       },
       // templateUrl
       {
@@ -58,9 +45,8 @@ module.exports = {
           { loader: 'template-url-webpack' },
           { loader: 'style-url-webpack' },
         ],
-        exclude: ['node_modules'],
+        exclude: /node_modules/,
         include: [
-          //  path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'test'),
         ],
       },
